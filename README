@@ -1,0 +1,70 @@
+README File for CS50 Amazing Project
+Team: Raboso
+Authors: Avalon McRae, Daniel Chen, Ted Owens
+Last Updated: 5/22/2014
+
+PROJECT DESCRIPTION
+-------------------
+	This project runs a program that solves a maze of unknown layout 
+	given an input number of Avatars who must find each other to 
+	"solve" the maze at an input difficulty level.
+
+
+GENERAL USAGE NOTES
+-------------------
+	The maximum number of Avatars that can be input is 10.
+
+	The maximum level of difficulty that can be input is 9.
+
+GRAPHICS
+--------
+	The maze can be viewed with graphics on or off. To run with graphics:
+
+	1) Open graphics.h
+	2) Change macro GRAPHICS to 1
+
+	To run without graphics (will print individual moves to terminal):
+
+	1) Open graphics.h
+	2) Change macro GRAPHICS to 0
+
+	All graphics are displayed using the NCURSES library with ASCII.
+	Please note that the display can be affected if text size is to large
+	or the maze does not fit on the screen. If this occurs, reduce the text
+	size of your terminal display (cmd + "-") on Macs.
+
+
+MEMORY REPORT
+-------------
+
+	The maze algorithm frees all associated memory with graphics on
+	and off.
+
+	PLEASE NOTE: the ncurses library allocates memory for it's display
+	processes. This memory is freed by calling the endwin() function.
+	However, the memory itself is not freed until the program itself
+	terminates. Thus Valgring WILL REPORT memory leakages when running
+	with graphics, even though the memory recquired by ncurses is
+	actually freed.
+
+	From the NCURSES documentation:
+	----------------------------------------------------------------
+	Any implementation of curses must not free the memory associated with
+	a screen, since (even after calling endwin()), it must be available
+	for use in the next call to refresh().  There are also chunks of
+	memory held for performance reasons.  That makes it hard to analyze
+	curses applications for memory leaks.  To work around this, build
+	a debugging version of the ncurses library which frees those chunks
+	which it can, and provides the _nc_free_and_exit() function to free
+	the remainder on exit.  The ncurses utility and test programs use this
+	feature, e.g., via the ExitProgram() macro.
+	----------------------------------------------------------------
+	Since we do not have root access on the lab machines, reconfiguring
+	the NCURSES library was not an available option to us.
+
+
+For more information, see the Raboso Design Specification
+
+
+
+
